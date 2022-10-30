@@ -1,10 +1,10 @@
 class ResponseHandler {
-  //   private field
+  // private field
   #response;
   constructor(response) {
     this.#response = response;
   }
-  //   static method
+  // static method
   static create(requestHandlerResponse) {
     try {
       return new ResponseHandler(requestHandlerResponse);
