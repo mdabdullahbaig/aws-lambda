@@ -1,13 +1,13 @@
 import getResponse from "./service.js";
 
 class RequestHandler {
-  //   private field
+  // private field
   #queryParams;
   constructor(queryParams) {
     this.#queryParams = queryParams;
   }
 
-  //   static method
+  // static method
   static create(queryParams) {
     try {
       return new RequestHandler(queryParams);
@@ -17,7 +17,7 @@ class RequestHandler {
     }
   }
 
-  //   normal method
+  // normal method
   async execute() {
     try {
       const response = getResponse(this.#queryParams);
