@@ -1,0 +1,11 @@
+{
+  "name": "aws-lambda-s3-poc",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.204.0",
+    "joi": "^17.7.0"
+  }
+}
