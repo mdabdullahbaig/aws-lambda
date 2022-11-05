@@ -10,7 +10,7 @@ const requestValidation = async (body) => {
     mobile_number: Joi.string()
       .length(10)
       .pattern(/^[0-9]+$/),
-    profile_image: Joi.string().base64(),
+    base64_profile_image: Joi.string().base64(),
   });
 
   //   body.profile_image = body.profile_image
