@@ -1,0 +1,11 @@
+{
+  "name": "aws-lambda-users-login",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "joi": "^17.7.0",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
