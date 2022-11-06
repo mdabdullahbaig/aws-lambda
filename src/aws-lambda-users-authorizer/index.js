@@ -12,8 +12,7 @@ export const handler = async (event, context) => {
         {
           Action: "execute-api:Invoke",
           Effect: "Deny",
-          Resource:
-            "arn:aws:execute-api:ap-south-1:208031230103:hhk6eiqjxk/development/*/users/*",
+          Resource: `arn:aws:execute-api:${process.env.REGION}:${process.env.ACCOUNT_ID}:${process.env.API_ID}/${process.env.STAGE}/*/users/*`,
         },
       ],
     },
@@ -30,7 +29,7 @@ export const handler = async (event, context) => {
     return response;
   }
 
-  const decodedToken = jwt.verify(token, process.env.secret);
+  const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
   console.log("Decoded Token", decodedToken);
 
   if (!decodedToken) {
