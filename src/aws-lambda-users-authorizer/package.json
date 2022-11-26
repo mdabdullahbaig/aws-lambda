@@ -1,0 +1,10 @@
+{
+  "name": "aws-lambda-users-authorizer",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  }
+}
