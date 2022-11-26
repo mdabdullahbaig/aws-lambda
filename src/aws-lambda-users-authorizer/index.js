@@ -12,32 +12,26 @@ export const handler = async (event, context) => {
         {
           Action: "execute-api:Invoke",
           Effect: "Deny",
-          Resource:
-            "arn:aws:execute-api:ap-south-1:208031230103:hhk6eiqjxk/development/*/users/*",
+          Resource: event.methodArn,
+          // Resource: `arn:aws:execute-api:${process.env.REGION}:${process.env.ACCOUNT_ID}:${process.env.API_ID}/${process.env.STAGE}/*/users/*`,
         },
       ],
     },
   };
 
-  const token = event?.headers?.authorization.split(" ")[1];
+  const token = event?.authorizationToken.split(" ")[1];
   console.log("Bearer Token", token);
 
   if (!token) {
-    // throw new CustomError(
-    //   "Authentication failed, Bearer token is not present",
-    //   401
-    // );
     return response;
   }
 
-  const decodedToken = jwt.verify(token, process.env.secret);
-  console.log("Decoded Token", decodedToken);
-
-  if (!decodedToken) {
-    // throw new CustomError(
-    //   "Authentication failed, Bearer token is incorrect",
-    //   401
-    // );
+  let decodedToken;
+  try {
+    decodedToken = await jwt.verify(token, process.env.JWT_SECRET);
+    console.log("Decoded Token", decodedToken);
+  } catch (err) {
+    console.log(err);
     return response;
   }
 
